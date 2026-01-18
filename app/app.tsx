@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 
-export default function AppPage() {
-  const { userId } = auth();
+export default async function AppPage() {
+  const { userId } = await auth();
 
   return (
     <main style={{ padding: 24 }}>
