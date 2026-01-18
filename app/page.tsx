@@ -1,19 +1,21 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
-import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
 
-export default function HomePage() {
-  return (
-    <main style={{ padding: 24 }}>
-      <SignedOut>
+export default async function Home() {
+  const { userId } = await auth();
+
+  if (!userId) {
+    return (
+      <main style={{ padding: 24 }}>
         <h1>Reply Tool</h1>
         <p>Please sign in to continue.</p>
-      </SignedOut>
+      </main>
+    );
+  }
 
-      <SignedIn>
-        <h1>Reply Tool</h1>
-        <p>You’re signed in.</p>
-        <Link href="/app">Go to the app →</Link>
-      </SignedIn>
+  return (
+    <main style={{ padding: 24 }}>
+      <h1>Reply Tool</h1>
+      <p>You’re signed in 🎉</p>
     </main>
   );
 }
