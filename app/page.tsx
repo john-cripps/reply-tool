@@ -1,21 +1,15 @@
-import { auth } from "@clerk/nextjs/server";
+import Link from "next/link";
 
-export default async function Home() {
-  const { userId } = await auth();
-
-  if (!userId) {
-    return (
-      <main style={{ padding: 24 }}>
-        <h1>Reply Tool</h1>
-        <p>Please sign in to continue.</p>
-      </main>
-    );
-  }
-
+export default function Home() {
   return (
-    <main style={{ padding: 24 }}>
+    <main style={{ padding: 40 }}>
       <h1>Reply Tool</h1>
-      <p>You’re signed in 🎉</p>
+      <p>
+        <Link href="/dashboard">Go to dashboard</Link>
+      </p>
+      <p>
+        <Link href="/sign-in">Sign in</Link>
+      </p>
     </main>
   );
 }

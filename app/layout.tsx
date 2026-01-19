@@ -1,18 +1,12 @@
-import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Inter } from "next/font/google";
 
-export const metadata: Metadata = {
-  title: "Reply Tool",
-  description: "MSA Reply Tool",
-};
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -21,19 +15,8 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body>
-          <header style={{ padding: 16, display: "flex", gap: 12 }}>
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-          {children}
-        </body>
+      <html lang="en" className={inter.variable} suppressHydrationWarning>
+        <body suppressHydrationWarning>{children}</body>
       </html>
     </ClerkProvider>
   );

@@ -1,0 +1,21 @@
+datasource db {
+  provider = "sqlite" // switch to "postgresql" later
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UsageMonthly {
+  id        String   @id @default(cuid())
+  userId    String
+  ym        String   // "2026-01"
+  drafts    Int      @default(0)
+  sends     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, ym], name: "userId_ym")
+  @@index([userId, ym])
+}
