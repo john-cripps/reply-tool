@@ -492,7 +492,7 @@ export default function ReplyToolClient({ userId }: { userId: string }) {
                     return (
                       <tr
                         key={idx}
-                        mclassName="msrRowClickable"
+                        className="msrRowClickable"
                         onClick={() => setSelected(r)}
                       >
                         <td>{fmtTime(r.time)}</td>
