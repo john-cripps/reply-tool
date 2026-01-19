@@ -27,3 +27,9 @@
     "typescript": "^5"
   }
 }
+{
+  "scripts": {
+    "postinstall": "prisma generate",
+    "build": "prisma migrate deploy && next build"
+  }
+}
