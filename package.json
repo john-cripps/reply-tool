@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate",
+    "build": "prisma migrate deploy && next build",
+    "start": "next start"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.8",
@@ -25,11 +26,5 @@
     "prisma": "^6.19.2",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
-}
-{
-  "scripts": {
-    "postinstall": "prisma generate",
-    "build": "prisma migrate deploy && next build"
   }
 }
